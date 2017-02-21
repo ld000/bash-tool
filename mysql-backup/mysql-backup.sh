@@ -5,7 +5,7 @@
 # Mysql backup script
 #
 #
-# author   : lidong@k2data.com.cn
+# author   : lidong9144@163.com
 # version  : 0.0.1
 #
 #####################################################################
