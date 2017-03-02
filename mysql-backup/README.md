@@ -1,4 +1,4 @@
-Mysql 物理备份, 依赖 xtrabacdkup
+Mysql 物理备份, 依赖 xtrabackup
 
 # 创建备份用户
 
