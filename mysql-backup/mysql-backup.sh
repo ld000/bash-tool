@@ -6,7 +6,7 @@
 #
 #
 # author   : lidong9144@163.com
-# version  : 0.0.1
+# version  : 0.0.2
 #
 #####################################################################
 
@@ -38,14 +38,15 @@ set -u
 full_backup() {
   echo "Mysql full backup..."
 
-  innobackupex \
+  xtrabackup \
     --parallel=5 \
     --compress \
     --compress-threads=5 \
     --user=$USER \
     --password=$PASSWORD \
     --no-timestamp \
-    $TARGET_DIR
+    --backup \
+    --target-dir=$TARGET_DIR
 
   echo "check if backup successfully"
 
@@ -79,10 +80,10 @@ restore() {
   fi
 
   echo "prepareing full backup..."
-  innobackupex \
+  xtrabackup \
     --parallel=5 \
-    --apply-log \
-    $FULL_DIR/$dir
+    --prepare \
+    --target-dir=$FULL_DIR/$dir
   
   echo "stop mysql..."
   service mysql stop
@@ -91,7 +92,7 @@ restore() {
   innobackupex \
     --copy-back \
  #   --include="^lingong\." \
-    $FULL_DIR/$dir
+    --target-dir=$FULL_DIR/$dir
 
   echo "start mysql..."
   service mysql start
