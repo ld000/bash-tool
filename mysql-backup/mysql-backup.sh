@@ -72,7 +72,7 @@ full_backup() {
 }
 
 restore() {
-  if [ "$OPTARG" -e "latest" ]; then
+  if [ "$OPTARG" == "latest" ]; then
     dir=`ls -t $FULL_DIR | tail -n 1`
   else
     dir=$OPTARG
