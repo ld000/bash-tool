@@ -89,7 +89,7 @@ restore() {
   service mysql stop
 
   echo "restore data file..."
-  innobackupex \
+  xtrabackup \
     --copy-back \
  #   --include="^lingong\." \
     --target-dir=$FULL_DIR/$dir
