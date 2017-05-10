@@ -2,8 +2,8 @@
 
 #####################################################################
 #
-# Post dynamic data to kmx, sleep 3 second every loop
-# Use restful api
+# Post dynamic data to kmx, sleep 3 seconds in every loop.
+# Use restful api.
 #
 #
 # author   : lidong9144@163.com
