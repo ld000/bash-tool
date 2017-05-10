@@ -43,7 +43,7 @@ do
 
     echo "post kmx. url: $url, body: $body"
 
-#    curl -d "$body" "$url"
+    curl -d "$body" "$url"
   done
 
   sleep 3
