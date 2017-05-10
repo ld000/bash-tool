@@ -2,8 +2,8 @@
 
 #####################################################################
 #
-# Post dynamic data to kmx, sleep 3 seconds in every loop.
-# Use restful api.
+# Post dynamic data to kmx, sleep 3 second every loop
+# Use restful api
 #
 #
 # author   : lidong9144@163.com
@@ -27,17 +27,14 @@ do
 
     for field in $fields
     do
-      value=$(date +%s)
-      value=$[value*1000]
+      value=$RANDOM
       fieldBody=$fieldBody"{\"fieldId\": \"$field\", \"fieldValue\": $value},"
     done
 
-    len=${#fieldBody}
-    len=$len-1
+    len=`expr ${#fieldBody} - 1`
     fieldBody=${fieldBody:0:len}
 
-    timestamp=$(date +%s)
-    timestamp=$[timestamp*1000]
+    timestamp=`expr $(date +%s) \* 1000`
 
     body="{\"fieldGroupId\": \"$fieldGroupId\", \
       \"sampleTime\": {\"timestamp\": $timestamp}, \
@@ -46,7 +43,7 @@ do
 
     echo "post kmx. url: $url, body: $body"
 
-    curl -d "$body" "$url"
+#    curl -d "$body" "$url"
   done
 
   sleep 3
